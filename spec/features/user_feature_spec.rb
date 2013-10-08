@@ -4,11 +4,11 @@ describe User do
   	it "should sign up" do
 		lambda { sign_up }.should change(User, :count).by(1)
 		expect(page).to have_content("Welcome, alice@example.com")
-		expect(User.first.email).to eq("alice@example.com")
+		expect(User.last.email).to eq("alice@example.com")
 	end
 
 	it 'should display a user sign up form' do
-		visit '/user/new'
+		visit '/users/new'
 		
 		expect(page).to have_content 'Please sign up'
 	end	
@@ -36,9 +36,12 @@ end
 # end
 
 def sign_up(email = "alice@example.com", password = "oranges!", password_confirmation = "oranges!")
-	visit '/user/new'
-	fill_in :email, :with => email
-	fill_in :password, :with => password
-	fill_in :password_confirmation, :with => password_confirmation
-	click_button "Sign up"
+	visit '/users/new'
+
+	within '.new_user' do
+		fill_in :user_email, :with => email
+		fill_in :user_password, :with => password
+		fill_in :user_password_confirmation, :with => password_confirmation
+		click_button "Create User"
+	end
 end

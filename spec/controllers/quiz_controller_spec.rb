@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe QuizController do
+describe QuizzesController do
 
 end

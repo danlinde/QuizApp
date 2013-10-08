@@ -1,0 +1,18 @@
+%h2  Please sign up: 
+
+= form_for @user do |f|
+	= f.text_field :email, placeholder: 'email'
+	= f.password_field :password, placeholder: 'password'
+	= f.password_field :password_confirmation, placeholder: 'just to check'
+	= f.submit
+
+
+
+
+/ { action: '/user', method: 'post'}
+/ 	%input{ name: 'email', type: 'text', value: "", placeholder: 'email'}
+/ 	%input{ name: 'password', type: 'password', placeholder: 'password'}
+/ 	%input{ name: 'password_confirmation', type: 'password', placeholder: 'Just to check'}
+/ 	%input{ type: 'submit', value: 'Sign up'}
+
+
