@@ -1,0 +1,8 @@
+%h2  Please enter a question: 
+
+= form_for @question do |f|
+	= f.label :ask
+	= f.text_field :ask, placeholder: 'your question here'
+	= f.label :true
+	= f.check_box :answer
+	= f.submit
