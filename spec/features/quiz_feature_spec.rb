@@ -32,6 +32,3 @@ describe 'new quiz form' do
 		expect(page).to have_content("Brand new quiz")
 	end
 end
-
-
-

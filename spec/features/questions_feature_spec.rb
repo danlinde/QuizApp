@@ -27,10 +27,9 @@ describe 'new question form' do
 		visit '/questions/new'
 		within '.new_question' do
 			fill_in "Ask", with: 'Brand new question'
-			fill_in "Answer", with: true
 			click_button "Create Question"
 		end
 		expect(page).to have_content("Brand new question")
-		expect(page).to have_content("t")
 	end
 end
+

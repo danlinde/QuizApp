@@ -13,7 +13,8 @@ class QuizzesController < ApplicationController
 
 	def create
 		quiz = Quiz.create(params[:quiz].permit(:title))
-		# quiz = Quiz.last
+		# question = Question.create(ask: params[:question])
+		# quiz.questions << question
 		redirect_to quiz_path(quiz)
 		# redirect_to quiz
 	end

@@ -33,6 +33,7 @@ gem 'bcrypt-ruby'
 group :development, :test do  
 	gem 'rspec-rails', '~>2.0'
 	gem 'capybara'
+	gem 'shoulda'
 end
 
 group :doc do
