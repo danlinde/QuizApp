@@ -4,6 +4,7 @@ def create_question(attribute)
 	Question.create(attribute)
 end
 
+
 describe 'the question page' do
 	it 'should display a question' do
 		create_question(ask: 'some question')
@@ -27,9 +28,11 @@ describe 'new question form' do
 		visit '/questions/new'
 		within '.new_question' do
 			fill_in "Ask", with: 'Brand new question'
+			fill_in "Quiz", with: "2"
 			click_button "Create Question"
 		end
 		expect(page).to have_content("Brand new question")
+		expect(page).to have_content("2")
 	end
 end
 

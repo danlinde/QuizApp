@@ -1,0 +1,12 @@
+%h2  Your question: 
+%h3= @question.ask
+
+%h2  Please enter an answer to the question: 
+
+= form_for [@question, @answer] do |f|
+	= f.label :response
+	= f.text_field :response, placeholder: 'your answer here'
+	= f.label :correctness
+	= f.check_box :correctness
+	= f.hidden_field :question_id, value: @question.id
+	= f.submit

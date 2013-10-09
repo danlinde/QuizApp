@@ -1,1 +1,9 @@
 %h2= @question.ask 
+%p= @question.quiz_id 
+
+- if !@question.answers.empty?
+	- @question.answers.each do |answer|
+		%p= "#{answer.response}  =>  #{answer.correctness}"
+
+
+%p= link_to "Create Answer", new_question_answer_path(@question)

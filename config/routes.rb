@@ -1,9 +1,12 @@
 QuizApp::Application.routes.draw do
 
   resources :quizzes
-  resources :users
-  resources :questions
 
+  resources :questions do
+    resources :answers
+  end
+
+  resources :users
 
   # resources :users, only: [:new, :create, :index]
 

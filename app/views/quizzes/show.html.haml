@@ -1,5 +1,4 @@
 %h2= @quiz.title
-
-
-
-
+%p
+	- @quiz.questions.each do |question|
+		= question.ask
