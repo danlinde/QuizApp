@@ -9,11 +9,16 @@ class QuizzesController < ApplicationController
 
 	def new
 		@quiz = Quiz.new
-		5.times { @quiz.questions.build }
+		5.times do
+			question = @quiz.questions.build
+			2.times { question.answers.build }
+		end
 	end
 
 	def create
-		@quiz = Quiz.new(params[:quiz].permit(:title, questions_attributes: [:ask]))
+		# raise params.inspect
+		@quiz = Quiz.new(params[:quiz].permit(:title, questions_attributes: [:ask, answers_attributes: [:response]]))
+		# , answers_attributes: [:response, :correctness]
 		if @quiz.save
 			redirect_to quiz_path(@quiz)
 		else

@@ -58,14 +58,21 @@ describe 'new quiz form' do
 end
 
 describe 'creating a new quiz' do
-	it 'can also create a new question' do
+	before(:each) do
 		visit '/quizzes/new'
 		fill_in "Title", with: "Quiz title"
 		fill_in "Question", with: "What is your name?", :match => :first
-		click_button 'Create Quiz'
+	end
 
+	it 'can also create a new question' do
+		click_button 'Create Quiz'
 		expect(page).to have_content "What is your name?"
 		expect(Quiz.last.questions).not_to be_empty
 	end
 
+	it 'can also add an answer to a new question' do
+		fill_in "Answer", with: "the answer", :match => :first
+		click_button 'Create Quiz'
+		expect(page).to have_content "the answer"
+	end
 end

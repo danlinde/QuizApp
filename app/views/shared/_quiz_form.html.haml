@@ -4,7 +4,12 @@
 	= f.text_field :title, placeholder: 'your title here'
 	= f.fields_for :questions do |q_f|
 		= q_f.label :ask, "Question"
-		= q_f.text_field :ask, placeholder: 'place your questions here'
+		= q_f.text_field :ask, placeholder: 'place your question here'
+		= q_f.fields_for :answers do |a_f|
+			= a_f.label :response, "Answer"
+			= a_f.text_field :response, placeholder: 'place your answer here'
+			= a_f.label :correctness
+			= a_f.check_box :correctness
 	= f.submit
 
 - if @quiz.errors.any?
