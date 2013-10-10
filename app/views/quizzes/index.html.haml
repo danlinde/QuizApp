@@ -1,4 +1,5 @@
-- @quizzes.each do |quiz|
-	%p= link_to quiz.title, quiz
+%div
+	- @quizzes.each do |quiz|
+		%p= link_to quiz.title, quiz
 
 
