@@ -2,3 +2,5 @@
 %p
 	- @quiz.questions.each do |question|
 		= question.ask
+
+%p= link_to "Edit quiz", edit_quiz_path(@quiz)

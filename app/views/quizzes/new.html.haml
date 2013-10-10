@@ -1,6 +1,3 @@
 %h2  Please give the new quiz a title: 
 
-= form_for @quiz do |f|
-	= f.label :title
-	= f.text_field :title, placeholder: 'your title here'
-	= f.submit
+= render "shared/quiz_form"

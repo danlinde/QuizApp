@@ -14,13 +14,23 @@ describe 'the quiz page' do
 end
 
 describe 'an individual quiz' do
-	it 'has its own page' do
+	before(:each) do
 		create_quiz
 		visit '/quizzes'
 		click_link "Some quiz"
+	end
+
+	it 'has its own page' do
 		expect(page).to have_css 'h2', text: 'Some quiz'
 		expect(page).to have_css 'p', text: 'some question'
 
+	end
+
+	it 'can be edited' do
+		click_link "Edit quiz"
+		fill_in "Title", with: "Renamed quiz"
+		click_button "Update Quiz"
+		expect(page).to have_css 'h2', text: "Renamed quiz"
 	end
 end
 
@@ -32,5 +42,11 @@ describe 'new quiz form' do
 			click_button "Create Quiz"
 		end
 		expect(page).to have_content("Brand new quiz")
+	end
+
+	it 'should not accept a new quiz without a title' do
+		visit '/quizzes/new'
+			click_button 'Create Quiz'
+			expect(page).to have_content 'error'
 	end
 end

@@ -1,0 +1,15 @@
+
+= form_for @quiz do |f|
+	= f.label :title, placeholder: @quiz.title
+	= f.text_field :title, placeholder: 'your title here'
+	= f.submit
+
+- if @quiz.errors.any?
+	#error_explanation
+	%h2
+		= pluralize(@quiz.errors.count, "error")
+		prohibited this post from being saved:
+ 
+	%ul 
+		= @quiz.errors.full_messages.each do |msg|
+			%li= msg

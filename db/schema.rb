@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20131009102055) do
 
   create_table "answers", force: true do |t|
     t.string   "response"
-    t.boolean  "correctness"
+    t.boolean  "correctness", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "question_id"
