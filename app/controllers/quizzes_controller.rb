@@ -9,10 +9,11 @@ class QuizzesController < ApplicationController
 
 	def new
 		@quiz = Quiz.new
+		5.times { @quiz.questions.build }
 	end
 
 	def create
-		@quiz = Quiz.new(params[:quiz].permit(:title))
+		@quiz = Quiz.new(params[:quiz].permit(:title, questions_attributes: [:ask]))
 		if @quiz.save
 			redirect_to quiz_path(@quiz)
 		else
@@ -26,7 +27,7 @@ class QuizzesController < ApplicationController
 
 	def update
 		@quiz = Quiz.find params[:id]
-		if @quiz.update params[:quiz].permit(:title)
+		if @quiz.update params[:quiz].permit(:title, questions_attributes: [:ask, :id])
 			redirect_to @quiz
 		else
 			render 'edit'

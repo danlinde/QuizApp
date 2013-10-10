@@ -2,6 +2,9 @@
 = form_for @quiz do |f|
 	= f.label :title, placeholder: @quiz.title
 	= f.text_field :title, placeholder: 'your title here'
+	= f.fields_for :questions do |q_f|
+		= q_f.label :ask, "Question"
+		= q_f.text_field :ask, placeholder: 'place your questions here'
 	= f.submit
 
 - if @quiz.errors.any?

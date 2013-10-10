@@ -3,5 +3,7 @@ class Quiz < ActiveRecord::Base
 
 	validates :title, presence: true, uniqueness: true
 
+	accepts_nested_attributes_for :questions
+
 end
 
