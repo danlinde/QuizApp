@@ -17,7 +17,7 @@ class QuizzesController < ApplicationController
 
 	def create
 		# raise params.inspect
-		@quiz = Quiz.new(params[:quiz].permit(:title, questions_attributes: [:ask, answers_attributes: [:response]]))
+		@quiz = Quiz.new(quiz_params)
 		# , answers_attributes: [:response, :correctness]
 		if @quiz.save
 			redirect_to quiz_path(@quiz)
@@ -42,5 +42,15 @@ class QuizzesController < ApplicationController
 	def destroy
 		quiz = Quiz.find(params[:id]).destroy
 		redirect_to quizzes_path
+	end
+
+	private
+
+	def quiz_params
+		params[:quiz].permit :title,
+							 questions_attributes: 
+							 	[ :ask, 
+							 	  answers_attributes: [:response, :correctness]
+							 	]
 	end
 end
