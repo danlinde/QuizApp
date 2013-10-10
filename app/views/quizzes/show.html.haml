@@ -4,3 +4,5 @@
 		= question.ask
 
 %p= link_to "Edit quiz", edit_quiz_path(@quiz)
+
+%p= button_to "delete", @quiz, :method=>:delete, confirm: 'Are you sure?'

@@ -32,6 +32,12 @@ describe 'an individual quiz' do
 		click_button "Update Quiz"
 		expect(page).to have_css 'h2', text: "Renamed quiz"
 	end
+
+	it 'can be deleted' do
+		click_button "delete"
+		expect(page).not_to have_content 'Some quiz'
+	end
+
 end
 
 describe 'new quiz form' do
